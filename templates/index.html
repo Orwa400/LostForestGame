@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content=""width=device-width, initial-scale="1.0">
+    <title>Lost in the Enchanted Forest</title>
+</head>
+<body>
+    <h1>{{ chapter.title }}</h1>
+    <p>{{ chapter.text}}</p>
+
+    <form method="post" action="/">
+        <label for="action">Choose your action:</label>
+        <select name="action" id="action">
+            {% for option in chapter.options %}
+                <option value="{{ option}}">{{ option }}</option>
+                {% endfor %}
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+
+    <p>Player: {{ player.name }} | Weapon: {{ player.weapon }} | Resources: {{ player.resources }}</p>
+</body>
+</html>
