@@ -48,4 +48,23 @@ def index():
     if request.method == "POST":
         action = request.form["action"]
 
-        # Process
+        # Process player's action
+        process_action(action)
+
+  # Render the current chapter
+  return render_template("index.html", chapter=chapters[current_chapter - 1], player=player)
+
+def process_action(action):
+    global current_chapter
+
+    # Add your logic to handle player's actions and update the game stats
+
+    current_chapter += 1
+
+    if current_chapter > len(chapters):
+        current_chapter = 1
+
+
+If __name__ == "__main__":
+    app.run(debug=True)
+
