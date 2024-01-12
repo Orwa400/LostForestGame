@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from flask import redirect, url_for
 
 app = Flask(__name__)
 
@@ -41,7 +42,19 @@ chapters = [
 ]
 
 # Game routes
-@app.route("/", methods=["GET", "POST"])
+@app.route("/create_profile", methods=["GET", "POST"])
+def create_profile():
+    if request.method == "POST":
+        # Collect user's profile information
+        player['name'] = request.form['name']
+        player['weapon'] = request.form['weapon']
+        player['resources'] = [request.form['resources1'], request.form['resource2'], request.form['resource3']]
+
+        # Redirect to the game page after creating the profile
+        return redirect(url_for('index'))
+
+return render_template("create_profile.html")
+
 def index():
     global current_chapter
 
